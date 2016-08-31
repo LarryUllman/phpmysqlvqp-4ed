@@ -7,9 +7,9 @@ include ('includes/header.html');
 echo '<h1>Registered Users</h1>';
 
 require ('../mysqli_connect.php');
-		
+
 // Define the query:
-$q = "SELECT last_name, first_name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr, user_id FROM users ORDER BY registration_date ASC";		
+$q = "SELECT last_name, first_name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr, user_id FROM users ORDER BY registration_date ASC";
 $r = @mysqli_query ($dbc, $q);
 
 // Count the number of returned rows:
@@ -23,14 +23,14 @@ if ($num > 0) { // If it ran OK, display the records.
 	// Table header:
 	echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
 	<tr>
-		<td align="left"><b>Edit</b></td>
-		<td align="left"><b>Delete</b></td>
-		<td align="left"><b>Last Name</b></td>
-		<td align="left"><b>First Name</b></td>
-		<td align="left"><b>Date Registered</b></td>
+		<td align="left"><strong>Edit</strong></td>
+		<td align="left"><strong>Delete</strong></td>
+		<td align="left"><strong>Last Name</strong></td>
+		<td align="left"><strong>First Name</strong></td>
+		<td align="left"><strong>Date Registered</strong></td>
 	</tr>
 ';
-	
+
 	// Fetch and print all the records:
 	while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 		echo '<tr>
@@ -44,7 +44,7 @@ if ($num > 0) { // If it ran OK, display the records.
 	}
 
 	echo '</table>';
-	mysqli_free_result ($r);	
+	mysqli_free_result ($r);
 
 } else { // If no records were returned.
 	echo '<p class="error">There are currently no registered users.</p>';

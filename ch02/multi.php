@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta charset="utf-8">
 	<title>Multidimensional Arrays</title>
 </head>
 <body>
@@ -10,7 +10,7 @@
 
 // Create one array:
 $mexico = array(
-'YU' => 'Yucatan', 
+'YU' => 'Yucatan',
 'BC' => 'Baja California',
 'OA' => 'Oaxaca'
 );
@@ -25,7 +25,7 @@ $us = array (
 
 // Create a third array:
 $canada = array (
-'QC' => 'Quebec', 
+'QC' => 'Quebec',
 'AB' => 'Alberta',
 'NT' => 'Northwest Territories',
 'YT' => 'Yukon',
@@ -44,12 +44,12 @@ foreach ($n_america as $country => $list) {
 
 	// Print a heading:
 	echo "<h2>$country</h2><ul>";
-	
+
 	// Print each state, province, or territory:
 	foreach ($list as $k => $v) {
 		echo "<li>$k - $v</li>\n";
 	}
-	
+
 	// Close the list:
 	echo '</ul>';
 

@@ -13,21 +13,21 @@ if (isset($_SESSION['user_id'])) {
 
 	// Display the form:
 	echo '<form action="post.php" method="post" accept-charset="utf-8">';
-	
+
 	// If on read.php...
 	if (isset($tid) && $tid) {
 
 		// Print a caption:
 		echo '<h3>' . $words['post_a_reply'] . '</h3>';
-	
+
 		// Add the thread ID as a hidden input:
-		echo '<input name="tid" type="hidden" value="' . $tid . '" />';
-		
+		echo '<input name="tid" type="hidden" value="' . $tid . '">';
+
 	} else { // New thread
 
 		// Print a caption:
 		echo '<h3>' . $words['new_thread'] . '</h3>';
-	
+
 		// Create subject input:
 		echo '<p><em>' . $words['subject'] . '</em>: <input name="subject" type="text" size="60" maxlength="100" ';
 
@@ -35,11 +35,11 @@ if (isset($_SESSION['user_id'])) {
 		if (isset($subject)) {
 			echo "value=\"$subject\" ";
 		}
-	
-		echo '/></p>';
-	
+
+		echo '></p>';
+
 	} // End of $tid IF.
-	
+
 	// Create the body textarea:
 	echo '<p><em>' . $words['body'] . '</em>: <textarea name="body" rows="10" cols="60">';
 
@@ -48,11 +48,11 @@ if (isset($_SESSION['user_id'])) {
 	}
 
 	echo '</textarea></p>';
-	
+
 	// Finish the form:
-	echo '<input name="submit" type="submit" value="' . $words['submit'] . '" />
+	echo '<input name="submit" type="submit" value="' . $words['submit'] . '">
 	</form>';
-	
+
 } else {
 	echo '<p>You must be logged in to post messages.</p>';
 }

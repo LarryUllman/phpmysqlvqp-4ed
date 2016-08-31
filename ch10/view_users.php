@@ -55,24 +55,24 @@ switch ($sort) {
 		$sort = 'rd';
 		break;
 }
-	
+
 // Define the query:
-$q = "SELECT last_name, first_name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr, user_id FROM users ORDER BY $order_by LIMIT $start, $display";		
+$q = "SELECT last_name, first_name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr, user_id FROM users ORDER BY $order_by LIMIT $start, $display";
 $r = @mysqli_query ($dbc, $q); // Run the query.
 
 // Table header:
 echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
 <tr>
-	<td align="left"><b>Edit</b></td>
-	<td align="left"><b>Delete</b></td>
-	<td align="left"><b><a href="view_users.php?sort=ln">Last Name</a></b></td>
-	<td align="left"><b><a href="view_users.php?sort=fn">First Name</a></b></td>
-	<td align="left"><b><a href="view_users.php?sort=rd">Date Registered</a></b></td>
+	<td align="left"><strong>Edit</strong></td>
+	<td align="left"><strong>Delete</strong></td>
+	<td align="left"><strong><a href="view_users.php?sort=ln">Last Name</a></strong></td>
+	<td align="left"><strong><a href="view_users.php?sort=fn">First Name</a></strong></td>
+	<td align="left"><strong><a href="view_users.php?sort=rd">Date Registered</a></strong></td>
 </tr>
 ';
 
 // Fetch and print all the records....
-$bg = '#eeeeee'; 
+$bg = '#eeeeee';
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
 	$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		echo '<tr bgcolor="' . $bg . '">
@@ -91,15 +91,15 @@ mysqli_close($dbc);
 
 // Make the links to other pages, if necessary.
 if ($pages > 1) {
-	
-	echo '<br /><p>';
+
+	echo '<br><p>';
 	$current_page = ($start/$display) + 1;
-	
+
 	// If it's not the first page, make a Previous button:
 	if ($current_page != 1) {
 		echo '<a href="view_users.php?s=' . ($start - $display) . '&p=' . $pages . '&sort=' . $sort . '">Previous</a> ';
 	}
-	
+
 	// Make all the numbered pages:
 	for ($i = 1; $i <= $pages; $i++) {
 		if ($i != $current_page) {
@@ -108,15 +108,15 @@ if ($pages > 1) {
 			echo $i . ' ';
 		}
 	} // End of FOR loop.
-	
+
 	// If it's not the last page, make a Next button:
 	if ($current_page != $pages) {
 		echo '<a href="view_users.php?s=' . ($start + $display) . '&p=' . $pages . '&sort=' . $sort . '">Next</a>';
 	}
-	
+
 	echo '</p>'; // Close the paragraph.
-	
+
 } // End of links section.
-	
+
 include ('includes/footer.html');
 ?>

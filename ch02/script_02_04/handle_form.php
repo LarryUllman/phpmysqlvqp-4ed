@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta charset="utf-8">
 	<title>Form Feedback</title>
 	<style type="text/css" title="text/css" media="all">
 	.error {
@@ -41,16 +41,16 @@ if (!empty($_REQUEST['comments'])) {
 if (isset($_REQUEST['gender'])) {
 
 	$gender = $_REQUEST['gender'];
-	
+
 	if ($gender == 'M') {
-		$greeting = '<p><b>Good day, Sir!</b></p>';
+		$greeting = '<p><strong>Good day, Sir!</strong></p>';
 	} elseif ($gender == 'F') {
-		$greeting = '<p><b>Good day, Madam!</b></p>';
+		$greeting = '<p><strong>Good day, Madam!</strong></p>';
 	} else { // Unacceptable value.
 		$gender = NULL;
 		echo '<p class="error">Gender should be either "M" or "F"!</p>';
 	}
-	
+
 } else { // $_REQUEST['gender'] is not set.
 	$gender = NULL;
 	echo '<p class="error">You forgot to select your gender!</p>';
@@ -59,12 +59,12 @@ if (isset($_REQUEST['gender'])) {
 // If everything is OK, print the message:
 if ($name && $email && $gender && $comments) {
 
-	echo "<p>Thank you, <b>$name</b>, for the following comments:<br />
+	echo "<p>Thank you, <strong>$name</strong>, for the following comments:<br>
 	<tt>$comments</tt></p>
 	<p>We will reply to you at <i>$email</i>.</p>\n";
-	
+
 	echo $greeting;
-	
+
 } else { // Missing form value.
 	echo '<p class="error">Please go back and fill out the form again.</p>';
 }

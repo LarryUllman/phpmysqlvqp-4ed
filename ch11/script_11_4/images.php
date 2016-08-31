@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8">
 	<title>Images</title>
 	<script type="text/javascript" charset="utf-8" src="js/function.js"></script>
 </head>
@@ -19,18 +19,18 @@ $files = scandir($dir); // Read all the images into an array.
 foreach ($files as $image) {
 
 	if (substr($image, 0, 1) != '.') { // Ignore anything starting with a period.
-	
+
 		// Get the image's size in pixels:
 		$image_size = getimagesize ("$dir/$image");
 
 		// Make the image's name URL-safe:
 		$image_name = urlencode($image);
-		
+
 		// Print the information:
 		echo "<li><a href=\"javascript:create_window('$image_name',$image_size[0],$image_size[1])\">$image</a></li>\n";
-	
+
 	} // End of the IF.
-    
+
 } // End of the foreach loop.
 ?>
 </ul>

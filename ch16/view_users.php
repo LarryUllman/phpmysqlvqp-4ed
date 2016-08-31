@@ -9,7 +9,7 @@ include ('includes/header.html');
 echo '<h1>Registered Users</h1>';
 
 require ('../mysqli_oop_connect.php'); // Connect to the db.
-		
+
 // Make the query:
 $q = "SELECT CONCAT(last_name, ', ', first_name) AS name, DATE_FORMAT(registration_date, '%M %d, %Y') AS dr FROM users ORDER BY registration_date ASC";
 $r = $mysqli->query($q); // Run the query.
@@ -24,9 +24,9 @@ if ($num > 0) { // If it ran OK, display the records.
 
 	// Table header.
 	echo '<table align="center" cellspacing="3" cellpadding="3" width="75%">
-	<tr><td align="left"><b>Name</b></td><td align="left"><b>Date Registered</b></td></tr>
+	<tr><td align="left"><strong>Name</strong></td><td align="left"><strong>Date Registered</strong></td></tr>
 ';
-	
+
 	// Fetch and print all the records:
 	while ($row = $r->fetch_object()) {
 		echo '<tr><td align="left">' . $row->name . '</td><td align="left">' . $row->dr . '</td></tr>
@@ -34,9 +34,9 @@ if ($num > 0) { // If it ran OK, display the records.
 	}
 
 	echo '</table>'; // Close the table.
-	
+
 	$r->free(); // Free up the resources.
-	unset($r);	
+	unset($r);
 
 } else { // If no records were returned.
 

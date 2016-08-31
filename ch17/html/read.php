@@ -5,10 +5,10 @@ include ('includes/header.html');
 // Check for a thread ID...
 $tid = FALSE;
 if (isset($_GET['tid']) && filter_var($_GET['tid'], FILTER_VALIDATE_INT, array('min_range' => 1)) ) {
-	
+
 	// Create a shorthand version of the thread ID:
 	$tid = $_GET['tid'];
-	
+
 	// Convert the date if the user is logged in:
 	if (isset($_SESSION['user_tz'])) {
 		$posted = "CONVERT_TZ(p.posted_on, 'UTC', '{$_SESSION['user_tz']}')";
@@ -22,11 +22,11 @@ if (isset($_GET['tid']) && filter_var($_GET['tid'], FILTER_VALIDATE_INT, array('
 	if (!(mysqli_num_rows($r) > 0)) {
 		$tid = FALSE; // Invalid thread ID!
 	}
-	
+
 } // End of isset($_GET['tid']) IF.
 
 if ($tid) { // Get the messages in this thread...
-	
+
 	$printed = FALSE; // Flag variable.
 
 	// Fetch each:
@@ -37,15 +37,15 @@ if ($tid) { // Get the messages in this thread...
 			echo "<h2>{$messages['subject']}</h2>\n";
 			$printed = TRUE;
 		}
-	
+
 		// Print the message:
-		echo "<p>{$messages['username']} ({$messages['posted']})<br />{$messages['message']}</p><br />\n";
+		echo "<p>{$messages['username']} ({$messages['posted']})<br>{$messages['message']}</p><br>\n";
 
 	} // End of WHILE loop.
-		
+
 	// Show the form to post a message:
 	include ('includes/post_form.php');
-	
+
 } else { // Invalid thread ID!
 	echo '<p>This page has been accessed in error.</p>';
 }
